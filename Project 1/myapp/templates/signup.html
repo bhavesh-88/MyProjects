@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<!-- <script type="text/javascript"> -->
+		// function checkfname()
+		// {
+		// 	var f=document.form.fname.value;
+		// 	var reg=/^[A-Za-z]+$/
+		// 	if (f=='')
+		// 	{
+		// 		//alert("please enter first name");
+		// 		document.getElementById("fname").innerHTML="Please Enter First name"
+		// 	}
+		// 	else if(!reg.test(f))
+		// 	{
+		// 		document.getElementById("fname").innerHTML="Please Enter only Alphabate"	
+		// 	}
+		// 	else
+		// 	{
+		// 		document.getElementById("fname").innerHTML=''
+		// 	}
+		// }
+		// function checkmobile()
+		// {
+		// 	var f=document.form.mobile.value;
+		// 	var reg=/^\d{10}$/;
+		// 	if (f=='')
+		// 	{
+		// 		document.getElementById("mobile").innerHTML="Please Enter mobile number"
+		// 	}
+		// 	else if(!reg.test(f))
+		// 	{
+		// 		document.getElementById("mobile").innerHTML="Please Enter only digit"	
+		// 	}
+		// 	else
+		// 	{
+		// 		document.getElementById("mobile").innerHTML=''
+		// 	}
+		// }
+		// function checkemail()
+		// {
+		// 	var f=document.form.email.value;
+		// 	var reg=/^[A-Za-z0-9-_.]+@[A-Za-z]+\.[A-Za-z]{2,4}$/;
+		// 	if (f=='')
+		// 	{
+		// 		document.getElementById("email").innerHTML="Please Enter your email"
+		// 	}
+		// 	else if(!reg.test(f))
+		// 	{
+		// 		document.getElementById("email").innerHTML="Please Enter valid email"	
+		// 	}
+		// 	else
+		// 	{
+		// 		document.getElementById("mobile").innerHTML=''
+		// 	}
+		// }
+		// function checkpassword()
+		// {
+		// 	var f=document.form.Password.value;
+		// 	var reg=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+		// 	if (f=='')
+		// 	{
+		// 		document.getElementById("password").innerHTML="Please Enter password";
+		// 	}
+		// 	else if(!reg.test(f))
+		// 	{
+		// 		document.getElementById("password").innerHTML="Min 1 upper lower,number & special(8,15)";	
+		// 	}
+		// 	else
+		// 	{
+		// 		document.getElementById("password").innerHTML='';
+		// 	}
+		// }
+	 // 	function checkcpassword()
+		// {
+		// 	var f1=document.form.Password.value;
+		// 	var f2=document.form.CPassword.value;
+
+		// 	if (f2=='')
+		// 	{
+		// 		document.getElementById("cpassword").innerHTML="Please Enter  confrim password";
+		// 	}
+		// 	else if(f1 != f2)
+		// 	{
+		// 		document.getElementById("cpassword").innerHTML="password & confrim password does not matched";	
+		// 	}
+		// 	else
+		// 	{
+		// 		document.getElementById("cpassword").innerHTML='';
+		// 	}
+		// }		
+ 	<!-- </script> -->
+    <script src="{% static 'js/valid.js' %}">
+    	
+    </script>
+</head>
+<body>
+<center>
+	<h1><a href="/">HOME</a> || <a href="{% url 'signup' %}">SIGN UP</a> || <a href="{% url 'login' %}">LOGIN</a></h1>
+	<h1>Sign Up</h1>
+	<form method="post" name='form' action="">
+		{% csrf_token %}
+		<table cellpadding="5px" cellspacing="5px">
+			<tr>
+				<td>First Name</td>
+				<td><input type="text" name="fname" onblur="checkfname();"></td>
+				<td><span id="fname"></span></td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td><input type="text" name="lname" required></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" name="email" onblur="checkemail();"></td>
+				<td><span id="email"></span></td>
+			</tr>
+			<tr>
+				<td>Mobile</td>
+				<td><input type="text" name="mobile" onblur="checkmobile();"></td>
+				<td><span id="mobile"></span></td>
+			</tr>
+			<tr>
+				<td>Brith Date</td>
+				<td><input type="date" name="b"></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><textarea rows="5" cols="21"></textarea></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td><input type="radio" name="gender" value="male">Male
+					<input type="radio" name="gender" value="female">Female
+				</td>
+			</tr>
+			<tr>
+				<td>Hobby</td>
+				<td>
+					<input type="checkbox" name="h" value="Music">Music<br>
+					<input type="checkbox" name="h" value="Music">Cricket<br>
+					<input type="checkbox" name="h" value="Music">Traveling<br>
+					<input type="checkbox" name="h" value="Music">Reading<br>
+					<input type="checkbox" name="h" value="Music">Garding
+				</td>
+			</tr>
+			<tr>
+				<td>Education </td>
+				<td>
+					<select name='education'>
+						<option>-------Select Education----------</option>
+						<option value="d">10th</option>
+						<option value="23">12th</option>
+						<option value="3">BSC</option>
+						<option value="d">BA</option>
+						<option value="3">BCOM</option>
+					</select>	
+				</td>
+			</tr>
+			<tr>
+				<td>Resume</td>
+				<td><input type="file" name="resume"></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="Password" name="Password" onblur="checkpassword();"></td>
+				<td><span id="password"></span></td>
+			</tr>
+			<tr>
+				<td>Confrim Password</td>
+				<td><input type="Password" name="CPassword" onblur="checkcpassword();"></td>
+				<td><span id='cpassword'></span></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="sign up"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</body>
+</html>

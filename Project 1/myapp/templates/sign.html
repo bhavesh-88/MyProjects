@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>sign up</title>
+	<style type="text/css">
+		body{
+			background-color: #344a72;
+		}
+		.sign{
+			background-color: white;
+			height:560px;
+			width: 400px;
+			margin: auto;
+		}
+		form input{
+			border: 1px solid black;
+		}
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<div class="sign">		
+			<h1>sign up</h1>
+			<form method="post">
+			<table>
+			    <tr>
+			    <td>Firstname <span style="color :red">*</span>:</td>
+				<td><input type="text" name="fname" required></td>
+	            </tr> 
+				<tr>
+			    <td>Lasttname <span style="color :red">*</span>:</td>
+				<td><input type="text" name="lname" required></td>
+			    </tr> 
+				<tr>
+				<td>email<span style="color :red">*</span>:</td>
+				<td><input type="email" name="email"></td>
+				</tr>
+				 
+				<tr>
+				<td>password :</td>
+				<td><input type="password" name="pasw"></td>
+				</tr>
+				 
+				<tr>
+				<td>Contact :</td>
+				<td><input type="text" name="contact"></td>
+				</tr>
+				 
+				<tr>
+				<td>address :</td>
+				<td><textarea rows="5px" cols="12px"></textarea></td>
+				</tr>
+				 
+				<tr>
+				<td>State :</td>
+				<td><select>
+				    <option>----select your state-----</option>
+					<option>Rajasthan</option>
+					<option>Dehli</option>
+					<option>Haryana</option>
+					<option>Punjab</option>
+					<option>Mp</option>
+				</select></td>
+				</tr>
+				 
+				<tr>
+			    <td>DoB :</td>
+				<td><input type="date"date"></td>
+			    </tr>
+			    
+				<tr>
+			   	<td>Age :</td>
+				<td><input type="number" name="age"></td>
+				</tr>
+				 
+				<tr>
+				<td>Gender :</td>
+				<td><input type="radio" name="Gender">Male
+				<input type="radio" name="Gender">Female</td>
+				</tr>
+				 
+				<tr>
+				<td>favorite game :</td>
+				<td><input type="checkbox" name="game">Football<br>
+				<input type="checkbox" name="game">Cricket<br>
+				<input type="checkbox" name="game">Tennis<br>
+				<input type="checkbox" name="game">Basketball<br>
+				<input type="checkbox" name="game">Kabbadi</td><br>
+				</tr>
+				 
+				<tr>
+				<td><input type="submit" value="submit" style="background-color: skyblue; color: black;" ></td>
+				<td><input type="reset" value="reset"></td>
+				</tr>
+			</table>	 
+			</form>
+			<p> Note :<span style="color :red">*</span> indicate madatory fields</p>	
+		</div>
+	</center>
+</body>
+</html>
