@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<style type="text/css">
+  		tr,td{
+  			padding: 10px;
+  		}
+  	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">Tops Technology</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="/">Home</a></li>
+	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a href="#">Python</a></li>
+	          <li><a href="#">Java</a></li>
+	          <li><a href="#">Asp.Net</a></li>
+	          <li><a href="#">Mechine Learning</a></li>
+	          <li><a href="#">Artificial Intelligence</a></li>
+	          <li><a href="#">Data Science</a></li>
+	        </ul>
+	      </li>
+	      <li><a href="{% url 'contact' %}">Contact</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	    	{% if request.session.email %}
+	    		<li><a href="{% url 'change-password' %}"><span class="glyphicon glyphicon-edit">ChangePassword</span></a></li>	
+	    		<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> 
+	      		Logout({{request.session.fname}})</a></li>
+	      		<li><a href="{% url 'profile' %}"><img src="{{request.session.profile_pic}}" height="50px"width="50px"></a>  </li>
+	      	{% else %}
+	        	<li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+	      		<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+	      	{% endif %}
+	    </ul>
+	  </div>
+	</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

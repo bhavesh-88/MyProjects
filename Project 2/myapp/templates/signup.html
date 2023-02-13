@@ -1,0 +1,69 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<center>
+		<h1>Signup</h1>
+		{% if msg %}
+			<b style="color: blue;">{{msg}}</b>
+		{% endif %}	
+		<form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>First Name</td>
+					<td><input type="text" name='fname'></td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><input type="text" name='lname'></td>
+				</tr>
+				<tr>
+					<td>Email<span style="color:red;"> *</span>:</td>
+					<td><input type="text" name='email' required></td>
+				</tr>
+				<tr>
+					<td>Mobile<span style="color:red;"> *</span>:</td>
+					<td><input type="number" name='mobile' required></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td><textarea cols="22" rows="5" name="address"></textarea></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td>
+						<input type="radio" name="gender" value="male">Male
+						<input type="radio" name="gender" value="female">Female
+					</td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="password"></td>
+				</tr>
+				<tr>
+					<td>Confirm Password</td>
+					<td><input type="password" name="cpassword"></td>
+				</tr>
+				<tr>
+					<td>Profile Picture<span style="color:red;"> *</span>:</td>
+					<td><input type="file" name="profile_pic" required></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" name="action" value="sign up" class="btn btn-primary">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<p> Note :<span style="color :red">*</span> Indicate Mandatory Fields</p>
+</center>
+</body>
+</html>
+{% endblock %}

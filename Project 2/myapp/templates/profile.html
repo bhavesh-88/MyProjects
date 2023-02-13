@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<center>
+		<h1>Profile</h1>
+		{% if msg %}
+			<b style="color: blue;">{{msg}}</b>
+		{% endif %}	
+		<form method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>First Name</td>
+					<td><input type="text" name='fname' value="{{user.fname}}"></td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><input type="text" name='lname' value="{{user.lname}}"></td>
+				</tr>
+				<tr>
+					<td>Email<span style="color:red;"> *</span>:</td>
+					<td><input type="text" name='email' value="{{user.email}}" readonly required></td>
+				</tr>
+				<tr>
+					<td>Mobile<span style="color:red;"> *</span>:</td>
+					<td><input type="number" name='mobile' value="{{user.mobile}}" required></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td><textarea cols="22" rows="5" name="address">{{user.address}}"</textarea></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td>
+						{% if user.gender == "male" %}
+							<input type="radio" name="gender" value="male" checked>Male
+							<input type="radio" name="gender" value="female">Female
+						{% elif user.gender == "female" %}
+							<input type="radio" name="gender" value="male">Male
+							<input type="radio" name="gender" value="female" checked>Female
+						{% else %}
+							<input type="radio" name="gender" value="male">Male
+							<input type="radio" name="gender" value="female">Female
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center" ><img src="{{user.profile_pic.url}}" height="100px" width="100px"></td>
+				</tr>
+				<tr>
+					<td>Profile Picture<span style="color:red;"> *</span>:</td>
+					<td><input type="file" name="profile_pic" required></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" name="action" value="Update" class="btn btn-primary">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<p> Note :<span style="color :red">*</span> Indicate Madatory Fields</p>
+</center>
+</body>
+</html>
+{% endblock %}

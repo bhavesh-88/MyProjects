@@ -1,0 +1,50 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<center>
+		<h1>Contact</h1>
+		{% if msg %}
+			<b style="color: blue;">{{msg}}</b>
+		{% endif %}	
+		<form method="post" action="{% url 'contact' %}">			
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name='name'></td>
+				</tr>
+				<tr>
+					<td>Email<span style="color:red;"> *</span>:</td>
+					<td><input type="text" name='email' required></td>
+				</tr>
+				<tr>
+					<td>Mobile<span style="color:red;"> *</span>:</td>
+					<td><input type="text" name='mobile' required></td>
+				</tr>
+				<tr>
+					<td>Remarks</td>
+					<td><textarea cols="22" rows="5" name="remarks"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2 " align="center"><input type="submit" name="submit" value="subimt" class="btn btn-primary "></td>
+				</tr>
+			</table>
+		</form>
+		<p> Note :<span style="color :red">*</span> Indicate Mandatory Fields</p>
+	</center>
+	<h1>Recent Contact</h1>
+	{% for i in contacts %}
+		ID :{{i.id}}<br>
+		Name :{{i.name}}<br>
+		Remark :{{i.remarks}}<br><br>
+	{% endfor %}	
+</body>
+</html>
+{% endblock %}
